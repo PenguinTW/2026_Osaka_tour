@@ -362,16 +362,8 @@ export default function App() {
                 2026大阪行
               </h1>
               <p className="text-[12px] text-text-muted font-medium mt-0.5">
-                2026年04月19日 - 04月26日 • 心齋橋停留
+                2026年04月19日 - 04月26日
               </p>
-            </div>
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-100 flex items-center justify-center border border-border-subtle shadow-inner">
-              <img 
-                src="https://picsum.photos/seed/osaka/200/200" 
-                alt="Profile" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
             </div>
           </div>
 
@@ -429,25 +421,6 @@ export default function App() {
               <h2 className="text-3xl font-extrabold tracking-tight text-text-main">
                 {currentDayData.title}
               </h2>
-            </div>
-
-            {/* Placeholder for Map Overview (Mobile version of the design's right col) */}
-            <div className="mb-10 h-[160px] bg-slate-200 rounded-[24px] relative overflow-hidden border border-border-subtle shadow-inner group">
-              <img 
-                src={`https://picsum.photos/seed/${activeDay}/600/300?blur=5`} 
-                alt="Map Preview" 
-                className="w-full h-full object-cover opacity-50 transition-transform duration-700 group-hover:scale-110"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                 <div className="w-10 h-10 bg-accent-primary border-[3px] border-white rounded-full rounded-tr-none rotate-45 flex items-center justify-center shadow-xl">
-                    <MapPin className="w-5 h-5 text-white -rotate-45" />
-                 </div>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 bg-white/80 backdrop-blur px-4 py-2 rounded-xl flex items-center justify-between border border-white/20">
-                <span className="text-[11px] font-bold text-text-main pointer-events-none">當日行程分佈概覽</span>
-                <Navigation className="w-4 h-4 text-accent-primary" />
-              </div>
             </div>
 
             {/* Timeline Wrapper */}
