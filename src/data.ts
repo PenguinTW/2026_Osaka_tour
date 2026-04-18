@@ -140,7 +140,10 @@ export const TRIP_DATA: TripData = {
         {
           id: 'd2-3',
           title: '土井活鰻 伏見稻荷本店 (午餐)',
-          location: { name: '土井活鰻 伏見稻荷本店' }
+          location: { 
+            name: '土井活鰻 伏見稻荷本店',
+            googleMapUrl: 'https://maps.app.goo.gl/KUjDnkwK8bYjBgBD7'
+          }
         },
         {
           id: 'd2-4',
@@ -157,7 +160,10 @@ export const TRIP_DATA: TripData = {
         {
           id: 'd2-6',
           title: '祇園白川',
-          location: { name: '祇園白川' }
+          location: { 
+            name: '祇園白川',
+            googleMapUrl: 'https://maps.app.goo.gl/VjpwkAzn7t8aMKFw8'
+          }
         },
         {
           id: 'd2-7',
@@ -172,12 +178,22 @@ export const TRIP_DATA: TripData = {
     {
       day: 3,
       date: '2026-04-21 (二)',
-      title: '市區歷史與夜景',
+      title: '市區歷史',
       items: [
+        {
+          id: 'd3-0',
+          time: '上午',
+          title: '長堀橋站出發',
+          transportInfo: {
+            type: 'train',
+            details: ['長堀橋站 → 天滿橋站']
+          }
+        },
         {
           id: 'd3-1',
           time: '上午',
           title: '大阪城公園',
+          link: 'https://japantravel.go.link/40c22',
           location: { name: '大阪城天守閣' },
           details: ['天守閣拍照、森之宮散步']
         },
@@ -185,6 +201,7 @@ export const TRIP_DATA: TripData = {
           id: 'd3-2',
           time: '12:00',
           title: '烈志笑魚油 麺香房 三く (午餐)',
+          link: 'https://japantravel.go.link/1LeWl',
           location: { name: '三く拉麵', googleMapUrl: 'https://maps.app.goo.gl/qiBVcDo4CYvi84sK8' }
         },
         {
@@ -197,7 +214,10 @@ export const TRIP_DATA: TripData = {
           id: 'd3-4',
           time: '傍晚',
           title: '梅田藍天大廈看夜景',
-          location: { name: '梅田藍天大廈' },
+          location: { 
+            name: '梅田藍天大廈',
+            googleMapUrl: 'https://maps.app.goo.gl/wWATTwqCKoZXLX5G6'
+          },
           vouchers: [
             {
               id: 'v2-0',
