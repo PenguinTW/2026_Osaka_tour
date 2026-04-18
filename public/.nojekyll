@@ -1,0 +1,2 @@
+# Prevent GitHub Pages from using Jekyll to process the site
+# This ensures that folders like _next or assets (with underscores) are served correctly.
