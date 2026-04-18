@@ -192,15 +192,23 @@ const TimelineCard = ({ item }: { item: TimelineItem }) => {
 
 export default function App() {
   const [activeDay, setActiveDay] = useState(1);
+  const [todayDay, setTodayDay] = useState<number | null>(null);
 
   // Auto-detect current day of trip
   useEffect(() => {
     const today = new Date();
-    const todayStr = today.toISOString().split('T')[0]; // YYYY-MM-DD
+    const todayStr = today.getFullYear() + '-' + 
+                    String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                    String(today.getDate()).padStart(2, '0');
     
     const dayMatch = TRIP_DATA.days.find(d => d.date.startsWith(todayStr));
     if (dayMatch) {
       setActiveDay(dayMatch.day);
+      setTodayDay(dayMatch.day);
+    } else {
+      // If not during trip, default to Day 1
+      setActiveDay(1);
+      setTodayDay(null);
     }
   }, []);
 
@@ -244,6 +252,7 @@ export default function App() {
               const [year, month, day] = datePart.split('-');
               const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
               const displayMonth = monthNames[parseInt(month) - 1];
+              const isToday = todayDay === d.day;
 
               return (
                 <button
@@ -252,12 +261,17 @@ export default function App() {
                   className={`flex-shrink-0 flex flex-col items-center justify-center w-[52px] h-[52px] rounded-2xl transition-all duration-300 border
                     ${activeDay === d.day 
                       ? 'bg-accent-primary border-accent-primary text-white shadow-lg shadow-accent-primary/30' 
-                      : 'bg-white border-border-subtle text-text-muted hover:border-accent-primary/50'}`}
+                      : 'bg-white border-border-subtle text-text-muted hover:border-accent-primary/50'}
+                    ${isToday ? 'border-red-500 border-2 ring-2 ring-red-500/20' : ''}`}
                 >
-                  <span className={`text-[10px] font-bold uppercase leading-none mb-0.5 ${activeDay === d.day ? 'opacity-90' : 'opacity-60'}`}>
+                  <span className={`text-[10px] font-bold uppercase leading-none mb-0.5 
+                    ${activeDay === d.day ? 'opacity-90' : 'opacity-60'} 
+                    ${isToday && activeDay !== d.day ? 'text-red-500' : ''}`}>
                     {displayMonth}
                   </span>
-                  <span className="text-[15px] font-extrabold leading-none">{day}</span>
+                  <span className={`text-[15px] font-extrabold leading-none ${isToday && activeDay !== d.day ? 'text-red-500' : ''}`}>
+                    {day}
+                  </span>
                 </button>
               );
             })}
