@@ -27,7 +27,8 @@ export const TRIP_DATA: TripData = {
               id: 'v1',
               title: '送機訂單明細',
               type: 'pdf',
-              fileName: '1150419-送機訂單明細.pdf',
+              userId: 0,
+              fileName: '1150419-0-送機訂單明細.pdf',
               orderNumber: 'YM6777',
               previewUrl: 'https://drive.google.com/file/d/1uk3RYU7NCf8_hGJN4QpI4z7JKm2ycKLw/preview'
             }
@@ -43,11 +44,29 @@ export const TRIP_DATA: TripData = {
           time: '12:00',
           title: '抵達桃園機場報到',
           description: '1航廈, 報到櫃檯：7號',
+          vouchers: [
+            {
+              id: 'v1-2-1',
+              title: '虎航報到通知單',
+              type: 'pdf',
+              userId: 1,
+              fileName: '1150419-1-虎航報到通知單.pdf',
+              previewUrl: 'https://drive.google.com/file/d/1sncCM6bjEqJuNuJKtDZ7Hn9LlkuG64Y8/preview'
+            },
+            {
+              id: 'v1-2-2',
+              title: '虎航報到通知單',
+              type: 'pdf',
+              userId: 2,
+              fileName: '1150419-2-虎航報到通知單.pdf',
+              previewUrl: 'https://drive.google.com/file/d/1M-r7fTKciMIxQtk3BoMbyVhfTmornp3O/preview'
+            }
+          ],
           transportInfo: {
             type: 'flight',
             details: [
               '航班：IT212 (tigersmart)',
-              '座位：13E',
+              '座位：13E、13D',
               '託運行李：20 公斤'
             ]
           }
@@ -166,10 +185,28 @@ export const TRIP_DATA: TripData = {
           location: { name: '梅田藍天大廈' },
           vouchers: [
             {
-              id: 'v2',
+              id: 'v2-0',
               title: '梅田藍天大廈門票',
               type: 'pdf',
-              fileName: '0421梅田藍天大廈門票.pdf'
+              userId: 0,
+              fileName: '1150421-0-梅田藍天大廈門票.pdf',
+              previewUrl: 'https://drive.google.com/file/d/1prDH5ecKfnuTtR00PQA2UEvzGJjh6Ld_/preview'
+            },
+            {
+              id: 'v2-1',
+              title: '梅田藍天大廈門票',
+              type: 'pdf',
+              userId: 1,
+              fileName: '1150421-1-梅田藍天大廈門票.pdf',
+              previewUrl: 'https://drive.google.com/file/d/1Q5AYuP-Z2KXcsEmLoasuCCefk1AawiJ-/preview'
+            },
+            {
+              id: 'v2-2',
+              title: '梅田藍天大廈門票',
+              type: 'pdf',
+              userId: 2,
+              fileName: '1150421-2-梅田藍天大廈門票.pdf',
+              previewUrl: 'https://drive.google.com/file/d/18H228s3xCkI9pUS_9LpwWpR1j6RNF59U/preview'
             }
           ]
         }
@@ -212,9 +249,9 @@ export const TRIP_DATA: TripData = {
           time: '08:30',
           title: '抵達 USJ 準備入園',
           vouchers: [
-            { id: 'usj-1', title: '0422環球入場', type: 'pdf', fileName: '0422環球入場.pdf' },
-            { id: 'usj-2', title: '0422環球快速通關', type: 'pdf', fileName: '0422環球快速通關.pdf' },
-            { id: 'usj-3', title: '0422環球餐券', type: 'pdf', fileName: '0422環球餐券.pdf' }
+            { id: 'usj-1', title: '環球入場券', type: 'pdf', userId: 1, fileName: '1150422-1-環球入場.pdf' },
+            { id: 'usj-2', title: '環球快速通關', type: 'pdf', userId: 2, fileName: '1150422-2-環球快速通關.pdf' },
+            { id: 'usj-3', title: '環球餐券', type: 'pdf', userId: 0, fileName: '1150422-0-環球餐券.pdf' }
           ]
         },
         {
@@ -272,9 +309,9 @@ export const TRIP_DATA: TripData = {
           title: '海遊館 入場',
           location: { name: '大阪海遊館' },
           vouchers: [
-            { id: 'v5-1', title: '海遊館 憑證1', type: 'image', fileName: '海遊館_1.png' },
-            { id: 'v5-2', title: '海遊館 憑證2', type: 'image', fileName: '海遊館_2.png' },
-            { id: 'v5-3', title: '海遊館 門票', type: 'pdf', fileName: 'ticket.pdf' }
+            { id: 'v5-1', title: '海遊館 憑證1', type: 'image', userId: 0, fileName: '1150423-0-海遊館_1.png' },
+            { id: 'v5-2', title: '海遊館 憑證2', type: 'image', userId: 0, fileName: '1150423-0-海遊館_2.png' },
+            { id: 'v5-3', title: '海遊館 門票', type: 'pdf', userId: 0, fileName: '1150423-0-ticket.pdf' }
           ],
           details: ['12:00-12:15 入場', '14:20 企鵝餵食秀']
         },
@@ -289,8 +326,8 @@ export const TRIP_DATA: TripData = {
           time: '19:00',
           title: '道頓堀遊艇',
           vouchers: [
-            { id: 'v5-4', title: '19:00道頓堀遊船', type: 'pdf', fileName: '0423-1900道頓堀遊船.pdf' },
-            { id: 'v5-5', title: '19:30道頓堀遊船', type: 'pdf', fileName: '0423-1930道頓堀遊船.pdf' }
+            { id: 'v5-4', title: '19:00道頓堀遊船', type: 'pdf', userId: 1, fileName: '1150423-1-1900道頓堀遊船.pdf' },
+            { id: 'v5-5', title: '19:30道頓堀遊船', type: 'pdf', userId: 2, fileName: '1150423-2-1930道頓堀遊船.pdf' }
           ],
           details: ['18:45 前取票']
         },
@@ -383,7 +420,7 @@ export const TRIP_DATA: TripData = {
             ]
           },
           vouchers: [
-            { id: 'v8-1', title: '星宇回程資訊', type: 'image', fileName: 'image.png' }
+            { id: 'v8-1', title: '星宇回程資訊', type: 'image', userId: 0, fileName: '1150426-0-image.png' }
           ]
         }
       ]

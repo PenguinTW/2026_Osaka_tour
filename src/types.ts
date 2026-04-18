@@ -9,6 +9,7 @@ export interface Voucher {
   type: 'pdf' | 'qr' | 'image' | 'text';
   content?: string;
   fileName?: string;
+  userId?: number;
   orderNumber?: string;
   previewUrl?: string;
 }

@@ -6,7 +6,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  MapPin, 
   Clock, 
   Train, 
   Plane, 
@@ -66,8 +65,18 @@ const VoucherCard = ({ voucher }: { voucher: Voucher }) => {
               <Ticket className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-text-main">{voucher.title}</p>
-              <p className="text-[11px] text-text-muted">{voucher.fileName || voucher.type.toUpperCase()}</p>
+              <div className="flex items-center gap-2 mb-0.5">
+                <p className="text-sm font-semibold text-text-main">{voucher.title}</p>
+                {voucher.userId === 1 && (
+                  <span className="px-1.5 py-0.5 text-[10px] font-bold bg-blue-100 text-blue-600 rounded-md">使用者 1</span>
+                )}
+                {voucher.userId === 2 && (
+                  <span className="px-1.5 py-0.5 text-[10px] font-bold bg-purple-100 text-purple-600 rounded-md">使用者 2</span>
+                )}
+              </div>
+              <p className="text-[11px] text-text-muted">
+                {voucher.type.toUpperCase()} • {voucher.fileName?.split('-').pop() || '查看詳情'}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
