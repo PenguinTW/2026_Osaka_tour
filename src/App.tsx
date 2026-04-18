@@ -22,7 +22,8 @@ import {
   Footprints,
   Navigation,
   QrCode,
-  Eye
+  Eye,
+  X
 } from 'lucide-react';
 import { TRIP_DATA } from './data.ts';
 import { TimelineItem, DayItinerary, Voucher } from './types.ts';
@@ -41,36 +42,50 @@ const TransportIcon = ({ type }: { type: string }) => {
 const VoucherCard = ({ voucher }: { voucher: Voucher }) => {
   const [showPreview, setShowPreview] = useState(false);
 
+  // Prevent scroll when modal is open
+  useEffect(() => {
+    if (showPreview) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showPreview]);
+
   return (
-    <div className="flex flex-col mb-3 last:mb-0">
-      <div className="flex items-center justify-between p-4 bg-white border border-dashed border-border-subtle rounded-xl shadow-sm hover:shadow-md transition-shadow">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-accent-primary/10 text-accent-primary">
-            <Ticket className="w-5 h-5" />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-text-main">{voucher.title}</p>
-            <p className="text-[11px] text-text-muted">{voucher.fileName || voucher.type.toUpperCase()}</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          {voucher.previewUrl && (
-            <button 
-              onClick={() => setShowPreview(!showPreview)}
-              className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors ${showPreview ? 'bg-accent-primary text-white' : 'bg-slate-100 text-text-muted hover:text-accent-primary'}`}
-              title="預覽檔案"
-            >
-              <Eye className="w-5 h-5" />
-            </button>
-          )}
-          {voucher.orderNumber && (
-            <div className="text-right sm:block hidden">
-              <p className="text-[9px] uppercase font-bold tracking-wider text-text-muted opacity-60">Order ID</p>
-              <p className="text-xs font-mono font-semibold text-text-main">{voucher.orderNumber}</p>
+    <>
+      <div className="flex flex-col mb-3 last:mb-0">
+        <div className="flex items-center justify-between p-4 bg-white border border-dashed border-border-subtle rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-accent-primary/10 text-accent-primary">
+              <Ticket className="w-5 h-5" />
             </div>
-          )}
-          <div className="w-10 h-10 bg-black rounded-md flex items-center justify-center">
-            <QrCode className="w-6 h-6 text-white" />
+            <div>
+              <p className="text-sm font-semibold text-text-main">{voucher.title}</p>
+              <p className="text-[11px] text-text-muted">{voucher.fileName || voucher.type.toUpperCase()}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            {voucher.previewUrl && (
+              <button 
+                onClick={() => setShowPreview(true)}
+                className="w-10 h-10 rounded-md flex items-center justify-center bg-slate-100 text-text-muted hover:text-accent-primary transition-colors"
+                title="預覽檔案"
+              >
+                <Eye className="w-5 h-5" />
+              </button>
+            )}
+            {voucher.orderNumber && (
+              <div className="text-right sm:block hidden">
+                <p className="text-[9px] uppercase font-bold tracking-wider text-text-muted opacity-60">Order ID</p>
+                <p className="text-xs font-mono font-semibold text-text-main">{voucher.orderNumber}</p>
+              </div>
+            )}
+            <div className="w-10 h-10 bg-black rounded-md flex items-center justify-center">
+              <QrCode className="w-6 h-6 text-white" />
+            </div>
           </div>
         </div>
       </div>
@@ -78,21 +93,60 @@ const VoucherCard = ({ voucher }: { voucher: Voucher }) => {
       <AnimatePresence>
         {showPreview && voucher.previewUrl && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: '500px', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="mt-2 overflow-hidden rounded-xl border border-border-subtle bg-slate-100 relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowPreview(false)}
           >
-            <iframe 
-              src={voucher.previewUrl} 
-              className="w-full h-full border-none"
-              allow="autoplay"
-              loading="lazy"
-            />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between px-6 py-4 border-b border-border-subtle bg-white">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-accent-primary/10 text-accent-primary rounded-lg">
+                    <Ticket className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-text-main">{voucher.title}</h4>
+                    <p className="text-[10px] text-text-muted uppercase font-bold tracking-wider">Document Preview</p>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setShowPreview(false)}
+                  className="p-2 hover:bg-slate-100 rounded-full text-text-muted transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Modal Body (Iframe) */}
+              <div className="flex-1 bg-slate-50 relative">
+                <iframe 
+                  src={voucher.previewUrl} 
+                  className="w-full h-full border-none"
+                  allow="autoplay"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Modal Footer */}
+              <div className="px-6 py-3 bg-slate-50 border-t border-border-subtle flex items-center justify-center">
+                <p className="text-[11px] text-text-muted font-medium flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  此檔案僅供擁有檢視權限的 Google 帳號讀取
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 
