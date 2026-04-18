@@ -124,7 +124,8 @@ export const TRIP_DATA: TripData = {
       items: [
         {
           id: 'd2-1',
-          title: '心齋橋出發 前往京都',
+          title: '心齋橋站出發 前往京都',
+          link: 'https://japantravel.go.link/85yJf',
           transportInfo: {
             type: 'train',
             details: ['前往伏見稻荷大社']
@@ -144,13 +145,27 @@ export const TRIP_DATA: TripData = {
         {
           id: 'd2-4',
           title: '錦市場',
+          link: 'https://japantravel.go.link/4pPH4',
           location: { name: '錦市場' },
           details: ['必吃：玉子燒、豆乳甜甜圈']
         },
         {
           id: 'd2-5',
-          title: '二年坂 / 三年坂 / 祇園白川',
+          title: '二年坂 / 三年坂',
           location: { name: '二年坂' }
+        },
+        {
+          id: 'd2-6',
+          title: '祇園白川',
+          location: { name: '祇園白川' }
+        },
+        {
+          id: 'd2-7',
+          title: '返回心齋橋',
+          transportInfo: {
+            type: 'train',
+            details: ['京都 → 大阪']
+          }
         }
       ]
     },

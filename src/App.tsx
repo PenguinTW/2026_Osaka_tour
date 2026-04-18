@@ -349,7 +349,7 @@ export default function App() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex flex-col">
               <h1 className="text-xl font-extrabold tracking-tight text-text-main">
-                專屬訂製：大阪 8 日遊
+                2026大阪行
               </h1>
               <p className="text-[12px] text-text-muted font-medium mt-0.5">
                 2026年04月19日 - 04月26日 • 心齋橋停留
