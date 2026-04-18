@@ -56,6 +56,16 @@ const VoucherCard = ({ voucher }: { voucher: Voucher }) => {
     };
   }, [showPreview]);
 
+  const isLinktUrl = voucher.previewUrl?.includes('linkt.to');
+
+  const handlePreviewClick = () => {
+    if (isLinktUrl && voucher.previewUrl) {
+      window.open(voucher.previewUrl, '_blank');
+    } else {
+      setShowPreview(true);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col mb-3 last:mb-0">
@@ -82,11 +92,11 @@ const VoucherCard = ({ voucher }: { voucher: Voucher }) => {
           <div className="flex items-center gap-3">
             {voucher.previewUrl && (
               <button 
-                onClick={() => setShowPreview(true)}
+                onClick={handlePreviewClick}
                 className="w-10 h-10 rounded-md flex items-center justify-center bg-slate-100 text-text-muted hover:text-accent-primary transition-colors"
-                title="預覽檔案"
+                title={isLinktUrl ? "在新分頁開啟憑證" : "預覽檔案"}
               >
-                <Eye className="w-5 h-5" />
+                {isLinktUrl ? <ExternalLink className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
             )}
             {voucher.orderNumber && (

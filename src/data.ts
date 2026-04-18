@@ -90,7 +90,7 @@ export const TRIP_DATA: TripData = {
               type: 'pdf',
               userId: 1,
               fileName: 'Rapi:t-Coupon-1',
-              previewUrl: 'http://linkt.to/EY4erEG1'
+              previewUrl: 'http://linkt.to/S3uZrUM7'
             },
             {
               id: 'v1-4-2',
@@ -98,7 +98,7 @@ export const TRIP_DATA: TripData = {
               type: 'pdf',
               userId: 2,
               fileName: 'Rapi:t-Coupon-2',
-              previewUrl: 'http://linkt.to/EXSJRKvs'
+              previewUrl: 'http://linkt.to/S3wpJdVf'
             }
           ],
           transportInfo: {
@@ -394,6 +394,30 @@ export const TRIP_DATA: TripData = {
     title: '海灣風情與遊船',
     items: [
       {
+        id: 'd5-tickets',
+        time: '全日',
+        title: '當日通行：大阪周遊卡',
+        vouchers: [
+          {
+            id: 'v5-p1',
+            title: '大阪周遊卡 1',
+            type: 'pdf',
+            userId: 1,
+            fileName: 'Osaka-Pass-1',
+            previewUrl: 'http://linkt.to/X4RhMxd5'
+          },
+          {
+            id: 'v5-p2',
+            title: '大阪周遊卡 2',
+            type: 'pdf',
+            userId: 2,
+            fileName: 'Osaka-Pass-2',
+            previewUrl: 'http://linkt.to/X8fSujL1'
+          }
+        ],
+        details: ['設施內免費入場憑證', '全日無限次搭乘地鐵']
+      },
+      {
         id: 'd5-0',
         time: '10:00',
         title: '飯店出發 / 早餐 Time',
@@ -549,6 +573,24 @@ export const TRIP_DATA: TripData = {
           id: 'd8-2',
           time: '12:00',
           title: '搭乘 Rapi:t 前往關西機場',
+          vouchers: [
+            {
+              id: 'v8-2-1',
+              title: 'Rapi:t 憑證 1',
+              type: 'pdf',
+              userId: 1,
+              fileName: 'Rapi:t-Return-1',
+              previewUrl: 'http://linkt.to/EY4erEG1'
+            },
+            {
+              id: 'v8-2-2',
+              title: 'Rapi:t 憑證 2',
+              type: 'pdf',
+              userId: 2,
+              fileName: 'Rapi:t-Return-2',
+              previewUrl: 'http://linkt.to/EXSJRKvs'
+            }
+          ],
           transportInfo: {
             type: 'train',
             details: ['前往機場進行免稅店購物']
