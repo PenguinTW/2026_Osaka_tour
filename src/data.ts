@@ -282,11 +282,55 @@ export const TRIP_DATA: TripData = {
         {
           id: 'd4-4',
           time: '08:30',
-          title: '抵達 USJ 準備入園',
+          title: '環球影城 入場',
           vouchers: [
-            { id: 'usj-1', title: '環球入場券', type: 'pdf', userId: 1, fileName: '1150422-1-環球入場.pdf' },
-            { id: 'usj-2', title: '環球快速通關', type: 'pdf', userId: 2, fileName: '1150422-2-環球快速通關.pdf' },
-            { id: 'usj-3', title: '環球餐券', type: 'pdf', userId: 0, fileName: '1150422-0-環球餐券.pdf' }
+            { 
+              id: 'usj-1', 
+              title: '環球入場券', 
+              type: 'pdf', 
+              userId: 1, 
+              fileName: '1150422-1-環球入場.pdf',
+              previewUrl: 'https://drive.google.com/file/d/1ogbbn3TQLAZDhuiLuharkqPRYrWS40WQ/preview'
+            },
+            { 
+              id: 'usj-1-u2', 
+              title: '環球入場券', 
+              type: 'pdf', 
+              userId: 2, 
+              fileName: '1150422-2-環球入場.pdf',
+              previewUrl: 'https://drive.google.com/file/d/16SW9-FCBPLoMMYGVfkGPQ0MhWlS2T5NA/preview'
+            },
+            { 
+              id: 'usj-3', 
+              title: '環球餐券', 
+              type: 'pdf', 
+              userId: 0, 
+              fileName: '1150422-0-環球餐券.pdf',
+              previewUrl: 'https://drive.google.com/file/d/1rMfQg-E9WvE3JttiDxPkGJl7HXg63oVx/preview'
+            }
+          ]
+        },
+        {
+          id: 'd4-4b',
+          time: '08:30',
+          title: '環球影城 快速通關',
+          vouchers: [
+            { 
+              id: 'usj-2-u1', 
+              title: '環球快速通關', 
+              type: 'pdf', 
+              userId: 1, 
+              fileName: '1150422-1-環球快速通關.pdf',
+              previewUrl: 'https://drive.google.com/file/d/1jJ379-spy7HtYfRA6fTNT7IerIlOy_9U/preview'
+            },
+            { 
+              id: 'usj-2', 
+              title: '環球快速通關', 
+              type: 'pdf', 
+              userId: 2, 
+              fileName: '1150422-2-環球快速通關.pdf',
+              previewUrl: 'https://drive.google.com/file/d/1scyeSnGp0aAmFni689eQkYPpVj-1hE7S/preview'
+            }
           ]
         },
         {
