@@ -82,12 +82,30 @@ export const TRIP_DATA: TripData = {
           time: '19:00',
           title: '搭乘 Rapi:t 前往天下茶屋',
           link: 'https://japantravel.go.link/e3KWH',
-          description: '轉乘至長堀橋',
+          description: '入境後前往南海電鐵月台',
+          vouchers: [
+            {
+              id: 'v1-4-1',
+              title: 'Rapi:t 憑證 1',
+              type: 'pdf',
+              userId: 1,
+              fileName: 'Rapi:t-Coupon-1',
+              previewUrl: 'http://linkt.to/EY4erEG1'
+            },
+            {
+              id: 'v1-4-2',
+              title: 'Rapi:t 憑證 2',
+              type: 'pdf',
+              userId: 2,
+              fileName: 'Rapi:t-Coupon-2',
+              previewUrl: 'http://linkt.to/EXSJRKvs'
+            }
+          ],
           transportInfo: {
             type: 'train',
             platforms: '1/2 號月台',
             details: [
-              '途經：臨空城、發佐野',
+              '總共三站，途經：臨空城、泉佐野',
               '天下茶屋站下車'
             ]
           }
@@ -264,19 +282,11 @@ export const TRIP_DATA: TripData = {
         {
           id: 'd4-2',
           time: '06:50',
-          title: '御堂筋線心齋橋 → 梅田',
+          title: '下樓搭車：心齋橋 → USJ',
+          link: 'https://japantravel.go.link/k9h21',
           transportInfo: {
             type: 'train',
-            details: ['往 新大阪/梅田方向', '車程約 10 分']
-          }
-        },
-        {
-          id: 'd4-3',
-          time: '07:10',
-          title: 'JR 大阪站 → 櫻島站',
-          transportInfo: {
-            type: 'train',
-            details: ['JR 夢咲線', '往 桜島/Universal City 方向']
+            details: ['御堂筋線往梅田', '轉乘 JR 往 Universal City']
           }
         },
         {
@@ -373,50 +383,102 @@ export const TRIP_DATA: TripData = {
           id: 'd4-11',
           time: '21:30',
           title: 'YAKINIKUEN 忍鬨 (晚餐)',
+          link: 'https://japantravel.go.link/fBCxq',
           location: { name: '燒肉 忍鬨', googleMapUrl: 'https://maps.app.goo.gl/UERHfvhJxf1kCTEQ8' }
         }
       ]
     },
-    {
-      day: 5,
-      date: '2026-04-23 (四)',
-      title: '海灣風情與遊船',
-      items: [
-        {
-          id: 'd5-1',
-          time: '12:00',
-          title: '海遊館 入場',
-          location: { name: '大阪海遊館' },
-          vouchers: [
-            { id: 'v5-1', title: '海遊館 憑證1', type: 'image', userId: 0, fileName: '1150423-0-海遊館_1.png' },
-            { id: 'v5-2', title: '海遊館 憑證2', type: 'image', userId: 0, fileName: '1150423-0-海遊館_2.png' },
-            { id: 'v5-3', title: '海遊館 門票', type: 'pdf', userId: 0, fileName: '1150423-0-ticket.pdf' }
-          ],
-          details: ['12:00-12:15 入場', '14:20 企鵝餵食秀']
-        },
-        {
-          id: 'd5-2',
-          time: '下午',
-          title: '天保山區觀光',
-          details: ['大摩天輪', '聖瑪麗亞號 (無須預約)']
-        },
-        {
-          id: 'd5-3',
-          time: '19:00',
-          title: '道頓堀遊艇',
-          vouchers: [
-            { id: 'v5-4', title: '19:00道頓堀遊船', type: 'pdf', userId: 1, fileName: '1150423-1-1900道頓堀遊船.pdf' },
-            { id: 'v5-5', title: '19:30道頓堀遊船', type: 'pdf', userId: 2, fileName: '1150423-2-1930道頓堀遊船.pdf' }
-          ],
-          details: ['18:45 前取票']
-        },
-        {
-          id: 'd5-4',
-          time: '20:00',
-          title: 'Tanuki Chaya 爐端燒 (晚餐)',
-          location: { name: 'Tanuki Chaya', googleMapUrl: 'https://maps.app.goo.gl/kVKug17pU37MbU4i9' }
-        }
-      ],
+  {
+    day: 5,
+    date: '2026-04-23 (四)',
+    title: '海灣風情與遊船',
+    items: [
+      {
+        id: 'd5-0',
+        time: '10:00',
+        title: '飯店出發 / 早餐 Time',
+        transportInfo: { type: 'walk', details: ['自由享用早午餐'] }
+      },
+      {
+        id: 'd5-0b',
+        time: '11:20',
+        title: '前往海遊館',
+        link: 'https://japantravel.go.link/jPPa7',
+        transportInfo: { type: 'train', details: ['前往 大阪港站', '車程約 30-40 分'] }
+      },
+      {
+        id: 'd5-1',
+        time: '12:00',
+        title: '海遊館 入場',
+        location: { name: '大阪海遊館' },
+        vouchers: [
+          { 
+            id: 'v5-1', 
+            title: '海遊館 門票', 
+            type: 'pdf', 
+            userId: 1, 
+            fileName: '1150423-1-海遊館.pdf',
+            previewUrl: 'https://drive.google.com/file/d/12mNo5wX-8SRd_UnCTGiwpOptiqie8iTj/preview'
+          },
+          { 
+            id: 'v5-1-u2', 
+            title: '海遊館 門票', 
+            type: 'pdf', 
+            userId: 2, 
+            fileName: '1150423-2-海遊館.pdf',
+            previewUrl: 'https://drive.google.com/file/d/1iBD3up6uS_4bS9qritVERG39He6OOcKE/preview'
+          }
+        ],
+        details: ['12:00–14:30 參觀', '14:20 企鵝餵食秀']
+      },
+      {
+        id: 'd5-2',
+        time: '14:30',
+        title: '天保山區觀光',
+        details: [
+          '大摩天輪 / 市場廣場',
+          '聖瑪麗亞號：直接至乘船點 (無須預約)',
+          '白天整點發船 (45分) / 黃昏 18:30 (60分)'
+        ]
+      },
+      {
+        id: 'd5-2b',
+        time: '18:10',
+        title: '回市區',
+        link: 'https://japantravel.go.link/99KRL',
+        transportInfo: { type: 'train', details: ['大阪港站 → 市區'] }
+      },
+      {
+        id: 'd5-3',
+        time: '19:00',
+        title: '道頓堀遊艇',
+        vouchers: [
+          { 
+            id: 'v5-4', 
+            title: '19:00道頓堀遊船', 
+            type: 'pdf', 
+            userId: 1, 
+            fileName: '1150423-1-1900道頓堀遊船.pdf',
+            previewUrl: 'https://drive.google.com/file/d/1aJz06JAfIR0rVPC7ulQPZqDgUSGhylLp/preview'
+          },
+          { 
+            id: 'v5-5', 
+            title: '19:30道頓堀遊船', 
+            type: 'pdf', 
+            userId: 2, 
+            fileName: '1150423-2-1930道頓堀遊船.pdf',
+            previewUrl: 'https://drive.google.com/file/d/1GGFFYezC_xR5HCF1KH4SpkLdTiBm3Tu3/preview'
+          }
+        ],
+        details: ['18:45-19:00 取票', '19:00-19:30 遊船']
+      },
+      {
+        id: 'd5-4',
+        time: '20:00',
+        title: 'Tanuki Chaya 爐端燒 (晚餐)',
+        location: { name: 'Tanuki Chaya', googleMapUrl: 'https://maps.app.goo.gl/kVKug17pU37MbU4i9' }
+      }
+    ],
       notes: '今日交通車資約 ¥560'
     },
     {
@@ -425,25 +487,32 @@ export const TRIP_DATA: TripData = {
       title: '在地文化與黑門市場',
       items: [
         {
+          id: 'd6-0',
+          time: '早上',
+          title: '飯店出發',
+          transportInfo: { type: 'walk', details: ['輕鬆慢遊'] }
+        },
+        {
           id: 'd6-1',
-          title: '黑門市場 (早午餐)',
-          location: { name: '黑門市場' },
-          details: ['必吃：神戶牛、帆立貝']
+          title: '黑門市場',
+          location: { name: '黑門市場', googleMapUrl: 'https://maps.app.goo.gl/dtJPc5XThWiWscKg7' },
+          details: ['早午餐首選：神戶牛、帆立貝']
         },
         {
           id: 'd6-2',
           title: '日本橋電器街',
-          details: ['動漫、公仔、電玩']
+          location: { name: '日本橋電器街', googleMapUrl: 'https://maps.app.goo.gl/LkFVapwMLgsjyK576' },
+          details: ['動漫、公仔、電玩天地']
         },
         {
           id: 'd6-3',
           title: '八阪神社 (獅子殿)',
-          location: { name: '難波八阪神社' }
+          location: { name: '難波八阪神社', googleMapUrl: 'https://maps.app.goo.gl/cSaFYhF8bw9ab9Xn8' }
         },
         {
           id: 'd6-4',
           title: '千日前商店街',
-          location: { name: '千日前' }
+          location: { name: '千日前商店街', googleMapUrl: 'https://maps.app.goo.gl/wrwutUe4NvtoivVb8' }
         },
         {
           id: 'd6-5',
