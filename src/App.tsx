@@ -21,7 +21,8 @@ import {
   Car,
   Footprints,
   Navigation,
-  QrCode
+  QrCode,
+  Eye
 } from 'lucide-react';
 import { TRIP_DATA } from './data.ts';
 import { TimelineItem, DayItinerary, Voucher } from './types.ts';
@@ -37,30 +38,63 @@ const TransportIcon = ({ type }: { type: string }) => {
   }
 };
 
-const VoucherCard = ({ voucher }: { voucher: Voucher }) => (
-  <div className="flex items-center justify-between p-4 bg-white border border-dashed border-border-subtle rounded-xl mb-3 shadow-sm hover:shadow-md transition-shadow">
-    <div className="flex items-center gap-3">
-      <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-accent-primary/10 text-accent-primary">
-        <Ticket className="w-5 h-5" />
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-text-main">{voucher.title}</p>
-        <p className="text-[11px] text-text-muted">{voucher.fileName || voucher.type.toUpperCase()}</p>
-      </div>
-    </div>
-    <div className="flex items-center gap-3">
-      {voucher.orderNumber && (
-        <div className="text-right">
-          <p className="text-[9px] uppercase font-bold tracking-wider text-text-muted opacity-60">Order ID</p>
-          <p className="text-xs font-mono font-semibold text-text-main">{voucher.orderNumber}</p>
+const VoucherCard = ({ voucher }: { voucher: Voucher }) => {
+  const [showPreview, setShowPreview] = useState(false);
+
+  return (
+    <div className="flex flex-col mb-3 last:mb-0">
+      <div className="flex items-center justify-between p-4 bg-white border border-dashed border-border-subtle rounded-xl shadow-sm hover:shadow-md transition-shadow">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-accent-primary/10 text-accent-primary">
+            <Ticket className="w-5 h-5" />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-text-main">{voucher.title}</p>
+            <p className="text-[11px] text-text-muted">{voucher.fileName || voucher.type.toUpperCase()}</p>
+          </div>
         </div>
-      )}
-      <div className="w-10 h-10 bg-black rounded-md flex items-center justify-center">
-        <QrCode className="w-6 h-6 text-white" />
+        <div className="flex items-center gap-3">
+          {voucher.previewUrl && (
+            <button 
+              onClick={() => setShowPreview(!showPreview)}
+              className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors ${showPreview ? 'bg-accent-primary text-white' : 'bg-slate-100 text-text-muted hover:text-accent-primary'}`}
+              title="預覽檔案"
+            >
+              <Eye className="w-5 h-5" />
+            </button>
+          )}
+          {voucher.orderNumber && (
+            <div className="text-right sm:block hidden">
+              <p className="text-[9px] uppercase font-bold tracking-wider text-text-muted opacity-60">Order ID</p>
+              <p className="text-xs font-mono font-semibold text-text-main">{voucher.orderNumber}</p>
+            </div>
+          )}
+          <div className="w-10 h-10 bg-black rounded-md flex items-center justify-center">
+            <QrCode className="w-6 h-6 text-white" />
+          </div>
+        </div>
       </div>
+      
+      <AnimatePresence>
+        {showPreview && voucher.previewUrl && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: '500px', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="mt-2 overflow-hidden rounded-xl border border-border-subtle bg-slate-100 relative"
+          >
+            <iframe 
+              src={voucher.previewUrl} 
+              className="w-full h-full border-none"
+              allow="autoplay"
+              loading="lazy"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-  </div>
-);
+  );
+};
 
 const TimelineCard = ({ item }: { item: TimelineItem }) => {
   const [isOpen, setIsOpen] = useState(false);

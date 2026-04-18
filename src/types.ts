@@ -10,6 +10,7 @@ export interface Voucher {
   content?: string;
   fileName?: string;
   orderNumber?: string;
+  previewUrl?: string;
 }
 
 export interface Location {

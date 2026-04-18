@@ -28,7 +28,8 @@ export const TRIP_DATA: TripData = {
               title: '送機訂單明細',
               type: 'pdf',
               fileName: '1150419-送機訂單明細.pdf',
-              orderNumber: 'YM6777'
+              orderNumber: 'YM6777',
+              previewUrl: 'https://drive.google.com/file/d/1uk3RYU7NCf8_hGJN4QpI4z7JKm2ycKLw/preview'
             }
           ],
           details: [
