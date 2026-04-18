@@ -23,6 +23,7 @@ export interface TimelineItem {
   id: string;
   time?: string;
   title: string;
+  link?: string;
   description?: string;
   location?: Location;
   vouchers?: Voucher[];

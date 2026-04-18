@@ -23,7 +23,10 @@ import {
   Navigation,
   QrCode,
   Eye,
-  X
+  X,
+  MapPin,
+  TrainFront,
+  ArrowRight
 } from 'lucide-react';
 import { TRIP_DATA } from './data.ts';
 import { TimelineItem, DayItinerary, Voucher } from './types.ts';
@@ -173,21 +176,41 @@ const TimelineCard = ({ item }: { item: TimelineItem }) => {
           <p className="text-[12px] font-bold tracking-tight text-text-muted">
             {item.time || '計劃行程'}
           </p>
-          {item.location?.googleMapUrl && (
-            <a 
-              href={item.location.googleMapUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-text-muted hover:text-accent-primary transition-colors"
-            >
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          )}
         </div>
         
-        <h3 className="text-lg font-bold text-text-main tracking-tight leading-snug">
-          {item.title}
-        </h3>
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-lg font-bold text-text-main tracking-tight leading-snug flex-1">
+            {item.title}
+          </h3>
+          
+          <div className="flex items-center gap-2">
+            {/* Google Map Link Button */}
+            {item.location?.googleMapUrl && (
+              <a 
+                href={item.location.googleMapUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm border border-blue-100 group"
+                title="開啟 Google 地圖"
+              >
+                <MapPin className="w-5 h-5" />
+              </a>
+            )}
+
+            {/* Transit/Transfer Link Button */}
+            {item.link && (
+              <a 
+                href={item.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-300 shadow-sm border border-emerald-100 group"
+                title="查看轉乘資訊"
+              >
+                <TrainFront className="w-5 h-5" />
+              </a>
+            )}
+          </div>
+        </div>
 
         {item.description && (
           <p className="text-sm text-text-muted leading-relaxed mt-1">

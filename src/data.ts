@@ -62,6 +62,7 @@ export const TRIP_DATA: TripData = {
           id: 'd1-4',
           time: '19:00',
           title: '搭乘 Rapi:t 前往天下茶屋',
+          link: 'https://japantravel.go.link/e3KWH',
           description: '轉乘至長堀橋',
           transportInfo: {
             type: 'train',
